@@ -1,0 +1,6 @@
+{
+"USERNAME": "chino",
+"PASSWORD": "Jlennon2",
+"LAZY_LOGIN": "3",
+"LAZY_FORM": "2"
+}
