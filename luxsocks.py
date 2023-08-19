@@ -18,8 +18,8 @@ from pprint import pprint
 
 
 api = TwoCaptchaApi('2b67434ad6039b2c71cb986d1e4d7ca6')
-fileName = "{}.csv".format(time())
-captcha_filename = "captcha/" + "{}.png".format(time())
+fileName = f"{time()}.csv"
+captcha_filename = f"captcha/{time()}.png"
 
 
 #Load login details and search query data
@@ -62,7 +62,7 @@ with open(captcha_filename, 'rb') as captcha_file:
     captcha = api.solve(captcha_file)
 
 captchaSolution = captcha.await_result()
-print("Captcha Solved Successfully:  " + captchaSolution)
+print(f"Captcha Solved Successfully:  {captchaSolution}")
 
 
 # Login form fill
@@ -90,7 +90,7 @@ for row in rows[1:]:
         row = re.sub("\s\s+", " ", row)
         row = re.sub("^ | $", "", row)
         row = row.replace(" | ", "|")
-        print("Searching matching SOCKS5 for " + row)
+        print(f"Searching matching SOCKS5 for {row}")
         info = row.split("|")
 
 
@@ -118,11 +118,11 @@ for row in rows[1:]:
         firstsocks = driver.find_element_by_name("yt1")
         sockid = firstsocks.get_attribute("id")
         sockid = sockid.replace('grid-socks-btn-', '')
-        print("Buying Out SOCKS5 with id " + sockid)
+        print(f"Buying Out SOCKS5 with id {sockid}")
 
 
 
-        driver.get("https://luxsocks.ru/socks/buy/" + sockid)
+        driver.get(f"https://luxsocks.ru/socks/buy/{sockid}")
         x = json.loads(driver.find_element_by_tag_name('body').text)
 
         #last socks added to our cart, aka the one we just bought
